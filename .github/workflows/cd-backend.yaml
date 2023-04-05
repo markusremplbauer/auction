@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REGISTRY: ghcr.io
-      IMAGE_NAME: auction-backend
+      IMAGE_NAME: backend
       BACKEND_FOLDER: auction-backend
 
     steps:
