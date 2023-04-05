@@ -2,7 +2,6 @@ package at.htl.resources;
 
 import at.htl.dtos.AuctionDto;
 import at.htl.entities.Auction;
-import at.htl.entities.Bid;
 import at.htl.entities.Product;
 import at.htl.repositories.AuctionRepository;
 import at.htl.repositories.BidsRepository;
@@ -32,6 +31,19 @@ public class AuctionResource {
 
     @Inject
     BidsRepository bidsRepository;
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<AuctionDto> getAll() {
+        return auctionRepository.getAll().stream()
+                .map(a -> new AuctionDto(
+                        a.getId(),
+                        a.getProduct().getName(),
+                        a.getEndTs(),
+                        a.getBids().size() == 0 ? a.getStartPrice() : bidsRepository.getLastBid(a.getId()).getAmount(),
+                        a.getBids().size()))
+                .collect(Collectors.toList());
+    }
 
     @GET
     @Path("get-running")
