@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  auction-db:
+    container_name: auction-db
+    image: postgres:15.2
+    restart: always
+    environment:
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=app
+      - POSTGRES_DB=db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./auction-db:/var/lib/postgresql/data
