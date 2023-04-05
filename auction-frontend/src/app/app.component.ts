@@ -8,17 +8,17 @@ import { Auction } from "./models/auction.model";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  auction: Auction | null = null;
+  auctions: Auction[] = [];
 
   constructor(private auctionService: AuctionService) { }
 
   ngOnInit(): void {
-    this.getAuctionById(2001);
+    this.getAllAuctions();
   }
 
-  getAuctionById(id: number) {
-    this.auctionService.getById(id).subscribe({
-      next: value => this.auction = value,
+  getAllAuctions() {
+    this.auctionService.getAll().subscribe({
+      next: value => this.auctions = value,
       error: err => alert(err.message)
     });
   }

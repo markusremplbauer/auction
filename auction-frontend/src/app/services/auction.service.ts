@@ -10,7 +10,7 @@ export class AuctionService {
 
   constructor(private http: HttpClient) { }
 
-  getById(id: number) {
-    return this.http.get<Auction>(`${environment.backendUrl}/auction/${id}`);
+  getAll() {
+    return this.http.get<Auction[]>(`${environment.backendUrl}/auction`);
   }
 }
