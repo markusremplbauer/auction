@@ -14,6 +14,8 @@ jobs:
       run:
         working-directory: ${{ env.BACKEND_FOLDER }}
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     env:
       REGISTRY: ghcr.io
       IMAGE_NAME: backend
