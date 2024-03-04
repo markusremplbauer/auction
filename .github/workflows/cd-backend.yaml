@@ -15,6 +15,7 @@ jobs:
         working-directory: ${{ env.BACKEND_FOLDER }}
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       packages: write
     env:
       REGISTRY: ghcr.io
